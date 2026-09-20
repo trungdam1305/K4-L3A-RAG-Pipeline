@@ -1,0 +1,162 @@
+[
+  {
+    "id": "g01",
+    "question": "How many criteria is IELTS Writing Task 2 marked on, and how much is each worth?",
+    "expected_answer": "Four criteria, each worth 25%: Task Response, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy. Each is scored 1-9 and averaged to produce the Task 2 band score.",
+    "expected_context": "IELTS Writing Task 2 is marked on four criteria worth 25% each: Task Response, Coherence and Cohesion, Lexical Resource, and Grammatical Range and Accuracy.",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g02",
+    "question": "What does Band 7 Task Response mean in practice?",
+    "expected_answer": "At Band 7 the response addresses all parts of the task but some parts are covered more fully than others; the position is clear but conclusions may be inconsistent or ideas not always fully extended.",
+    "expected_context": "Addresses all parts but some parts are more fully covered than others. Position is clear but conclusions may be inconsistent or ideas not always fully extended.",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g03",
+    "question": "What characterises Band 6 Task Response?",
+    "expected_answer": "A Band 6 response addresses the task, but main ideas may be unclear, repetitive, or not always relevant, and the position may be unclear or inconsistent.",
+    "expected_context": "Addresses task, but main ideas may be unclear, repetitive, or not always relevant. Position may be unclear or inconsistent.",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g04",
+    "question": "What is the main difference between Band 6 and Band 7 in Lexical Resource?",
+    "expected_answer": "Collocation accuracy. Cambridge Assessment English (2024) identifies collocation errors as the most frequent single cause of a Band 6 ceiling in Lexical Resource.",
+    "expected_context": "The difference between Band 6 and Band 7 in Lexical Resource often comes down to **collocation accuracy**.",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g05",
+    "question": "What is the most common Task Response failure among Band 6 candidates?",
+    "expected_answer": "Answering only part of the question. Cambridge Assessment English (2024) reports that roughly 40% of candidates scoring Band 6 in Task Response fail to adequately address one part of a two-part question.",
+    "expected_context": "Cambridge Assessment English (2024) reports that approximately 40% of candidates scoring Band 6 in Task Response fail to adequately address one part of a two-part question.",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g06",
+    "question": "What share of Coherence and Cohesion errors at Band 6 come from repeated connectives and unfocused paragraphs?",
+    "expected_answer": "Over 60%. IDP Education (2024) data shows those two patterns account for more than 60% of the CC errors flagged in candidate scripts at Band 6.",
+    "expected_context": "IDP Education (2024) data shows these two patterns account for over 60% of the CC errors flagged in candidate scripts at Band 6.",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g07",
+    "question": "What does Band 9 Coherence and Cohesion look like?",
+    "expected_answer": "The argument flows seamlessly, cohesive devices are natural and varied, and paragraphing is perfectly controlled and serves the argument.",
+    "expected_context": "Argument flows seamlessly. Cohesive devices are natural and varied. Paragraphing is perfectly controlled and serves the argument.",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g08",
+    "question": "What are the two most common grammar errors in Band 6 scripts?",
+    "expected_answer": "Incorrect article use and run-on sentences where two independent clauses are joined with a comma instead of a conjunction or full stop. British Council (2024) notes both are systematic errors that push the GRA score down.",
+    "expected_context": "British Council (2024) analysis of Band 6 scripts shows the two most common GRA errors are: incorrect article use",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g09",
+    "question": "What does Band 8 Lexical Resource require?",
+    "expected_answer": "A wide resource, fluently deployed, with only occasional errors in word choice, collocation or spelling that do not obscure meaning.",
+    "expected_context": "Wide resource, fluently deployed. Occasional errors in word choice, collocation, or spelling",
+    "expected_source": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g10",
+    "question": "What is the minimum word count for IELTS Writing Task 1 and how long should I spend on it?",
+    "expected_answer": "At least 150 words, and you should spend no more than 20 minutes on it because it is the shorter of the two tasks.",
+    "expected_context": "For Task 1, you’re asked to write at least 150 words. This is the shorter of the two tasks, so it’s best to spend no more than 20 minutes on it.",
+    "expected_source": "news/ielts-org-take-a-test-preparation-resources-writing-test-resources.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g11",
+    "question": "How many words and how many minutes are recommended for Writing Task 2?",
+    "expected_answer": "At least 250 words, and about 40 minutes should be spent on Task 2.",
+    "expected_context": "For Task 2, you’re asked to write at least 250 words, so it’s best to spend about 40 minutes on this task.",
+    "expected_source": "news/ielts-org-take-a-test-preparation-resources-writing-test-resources.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g12",
+    "question": "Which two versions of the IELTS writing test exist?",
+    "expected_answer": "IELTS Academic and IELTS General Training. The writing tests differ, so candidates should check which one they need before booking.",
+    "expected_context": "IELTS Academic and IELTS General Training. The writing tests are different so before booking your IELTS test it’s important to find out which one is the right test for your needs.",
+    "expected_source": "news/ielts-org-take-a-test-preparation-resources-writing-test-resources.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g13",
+    "question": "Does Writing Task 2 count more than Task 1 towards the writing score?",
+    "expected_answer": "Yes. Writing Task 2 is longer and carries twice the weight of Writing Task 1 in the final writing score.",
+    "expected_context": "Note that writing task 2 is longer and so has twice the weight of writing task 1.",
+    "expected_source": "news/ieltstutors-org-writing-band-descriptors.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g14",
+    "question": "How much of the total Task 2 mark does coherence and cohesion account for?",
+    "expected_answer": "25% — a quarter of the total mark for the task.",
+    "expected_context": "Coherence and cohesion is worth 25% of your total mark, so it is extremely important because it’s worth a quarter of your total marks",
+    "expected_source": "news/ieltsadvantage-com-2017-11-02-task-2-coherence-and-cohesion.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g15",
+    "question": "Do Band 8 and Band 9 candidates use more cohesive devices than Band 6 candidates?",
+    "expected_answer": "No. In general band 8 and band 9 students use cohesive devices less than band 6 and band 7 students.",
+    "expected_context": "In general, band 8, band 9 students don’t use these as much as band 6, band 7 students.",
+    "expected_source": "news/ieltsadvantage-com-2017-11-02-task-2-coherence-and-cohesion.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g16",
+    "question": "Do I get extra marks for using impressive or complex linking words?",
+    "expected_answer": "No. There are no extra marks for fancy or impressive cohesive devices; examiners assess whether cohesive devices are used appropriately and accurately.",
+    "expected_context": "You do not get extra marks for using fancy or impressive cohesive devices.",
+    "expected_source": "news/ieltsadvantage-com-2017-11-02-task-2-coherence-and-cohesion.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g17",
+    "question": "Should I write an overview or a conclusion in Writing Task 1?",
+    "expected_answer": "An overview. The examiner looks for an overview in Task 1 and a conclusion in Task 2; the overview can be placed after the introduction or at the end of the report.",
+    "expected_context": "The examiner is looking for an overview in task 1 and a conclusion in task 2. The overview can be written after the introduction or at the end of the report.",
+    "expected_source": "news/ieltsliz-com-ielts-writing-task-1.md",
+    "doc_type": "news"
+  },
+  {
+    "id": "g18",
+    "question": "According to the official band descriptors, what does bolded text in the descriptor table mean?",
+    "expected_answer": "Bolded text marks negative features that will limit a rating. A script must fully fit the positive features of the descriptor at a particular level to be given that band.",
+    "expected_context": "A script must fully fit the positive features of the descriptor at a particular level. Bolded text indicates negative features that will limit a rating.",
+    "expected_source": "legal/ielts-writing-band-descriptors-2023.md",
+    "doc_type": "legal"
+  },
+  {
+    "id": "g19",
+    "question": "Are the four writing assessment criteria weighted equally?",
+    "expected_answer": "Yes. The official IELTS Guide for Teachers states that the four criteria are equally weighted.",
+    "expected_context": "The four criteria are equally weighted.",
+    "expected_source": "legal/ielts-guide-for-teachers.md",
+    "doc_type": "legal"
+  },
+  {
+    "id": "g20",
+    "question": "Which four criteria are used to score the IELTS Speaking test?",
+    "expected_answer": "Fluency and coherence, lexical resource, grammatical range and accuracy, and pronunciation.",
+    "expected_context": "Fluency and coherence  Lexical resource  Grammatical range and accuracy  Pronunciation",
+    "expected_source": "legal/ielts-speaking-band-descriptors.md",
+    "doc_type": "legal"
+  }
+]

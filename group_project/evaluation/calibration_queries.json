@@ -1,0 +1,35 @@
+{
+  "purpose": "Hieu chinh SCORE_THRESHOLD cho Task 9. In-domain phai vuot threshold, out-of-domain phai roi xuong duoi threshold de pipeline fallback hoac safe refusal.",
+  "owner": "Dam Quang Trung (2A202602525) cung cap query; Thai Huu Tuan (2A202602465) wire threshold vao retrieve().",
+  "metric": "dense cosine score cua ket qua top-1 tu task5_semantic_search (KHONG dung score RRF).",
+  "in_domain": [
+    "How many criteria is IELTS Writing Task 2 marked on, and how much is each worth?",
+    "What does Band 7 Task Response mean in practice?",
+    "What is the main difference between Band 6 and Band 7 in Lexical Resource?",
+    "What is the minimum word count for IELTS Writing Task 1?",
+    "How long should I spend on Writing Task 2?",
+    "Does Writing Task 2 count more than Task 1?",
+    "How much of the mark is coherence and cohesion worth?",
+    "Do I get extra marks for using complex linking words?",
+    "Should I write an overview or a conclusion in Task 1?",
+    "What do the bolded features in the official band descriptors mean?",
+    "Which four criteria are used to score IELTS Speaking?",
+    "What are the most common grammar mistakes at Band 6?"
+  ],
+  "out_of_domain": [
+    "What is the capital of Brazil?",
+    "How do I change the oil in a Honda Civic?",
+    "Who won the 2018 FIFA World Cup?",
+    "How do I install PostgreSQL on Ubuntu 22.04?",
+    "What are the early symptoms of type 2 diabetes?",
+    "Explain how the Transformer attention mechanism works.",
+    "What is the refund policy for my hostel booking in Da Nang?",
+    "What is the tuition fee at VinUniversity for 2026?",
+    "How do I reset my Windows 11 password?",
+    "What is the recipe for authentic Hue beef noodle soup?"
+  ],
+  "notes": [
+    "Hai query cuoi cua out_of_domain la hard negative: nghe giong mien giao duc/hoc phi nhung corpus khong he chua, dung de bat truong hop threshold dat qua thap.",
+    "Chay: python -m src.evaluate_ab --calibrate"
+  ]
+}
