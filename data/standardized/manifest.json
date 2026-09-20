@@ -1,0 +1,93 @@
+{
+  "legal/ielts-guide-for-teachers.md": {
+    "path": "legal/ielts-guide-for-teachers.md",
+    "title": "IELTS Guide for Teachers — test format and assessment criteria",
+    "url": "https://assets.ctfassets.net/unrdeg6se4ke/1LgkF1SjQMYi0TFKNEOL1d/d064817cc940426868a4f146a7eceba8/IELTS_Guide_for_teachers.pdf",
+    "doc_type": "legal",
+    "source": "ielts-guide-for-teachers.pdf"
+  },
+  "legal/ielts-speaking-band-descriptors.md": {
+    "path": "legal/ielts-speaking-band-descriptors.md",
+    "title": "IELTS Speaking Band Descriptors (public version)",
+    "url": "https://assets.cambridgeenglish.org/webinars/ielts-speaking-band-descriptors.pdf",
+    "doc_type": "legal",
+    "source": "ielts-speaking-band-descriptors.pdf"
+  },
+  "legal/ielts-writing-band-descriptors-2023.md": {
+    "path": "legal/ielts-writing-band-descriptors-2023.md",
+    "title": "IELTS Writing Band Descriptors (updated May 2023)",
+    "url": "https://assets.ctfassets.net/unrdeg6se4ke/WfjJuLMvOxuR3JqLvQmTm/62439e8dcb84a094455b7fb91e7af526/Writing_Band_Descriptors.pdf",
+    "doc_type": "legal",
+    "source": "ielts-writing-band-descriptors-2023.pdf"
+  },
+  "legal/ielts-writing-band-descriptors-task-1.md": {
+    "path": "legal/ielts-writing-band-descriptors-task-1.md",
+    "title": "IELTS Writing Task 1 — Band Descriptors (public version)",
+    "url": "https://assets.ctfassets.net/unrdeg6se4ke/19SJoSvnUYjrHgVhWvuMnC/42f1b0cb0d7709646a1392d8418646d0/writingbanddescriptorstask1and2.pdf",
+    "doc_type": "legal",
+    "source": "ielts-writing-band-descriptors-task-1.pdf"
+  },
+  "legal/ielts-writing-band-descriptors-task-2.md": {
+    "path": "legal/ielts-writing-band-descriptors-task-2.md",
+    "title": "IELTS Writing Task 2 — Band Descriptors (public version)",
+    "url": "https://assets.ctfassets.net/unrdeg6se4ke/4AqjlJ7Tp1wLiY1j6DzpOg/39561e03e8d48ddc7648b479b903c701/Writing-Band-descriptors-Task-2.pdf",
+    "doc_type": "legal",
+    "source": "ielts-writing-band-descriptors-task-2.pdf"
+  },
+  "news/ielts-org-take-a-test-preparation-resources-writing-test-resources.md": {
+    "path": "news/ielts-org-take-a-test-preparation-resources-writing-test-resources.md",
+    "title": "IELTS | IELTS Writing test preparation resources",
+    "url": "https://ielts.org/take-a-test/preparation-resources/writing-test-resources",
+    "doc_type": "news",
+    "source": "ielts-org-take-a-test-preparation-resources-writing-test-resources.json",
+    "date_crawled": "2026-09-20T20:43:45"
+  },
+  "news/ieltsadvantage-com-2017-11-02-task-2-coherence-and-cohesion.md": {
+    "path": "news/ieltsadvantage-com-2017-11-02-task-2-coherence-and-cohesion.md",
+    "title": "IELTS Writing Task 2- Coherence and Cohesion - IELTS Advantage",
+    "url": "https://www.ieltsadvantage.com/2017/11/02/task-2-coherence-and-cohesion/",
+    "doc_type": "news",
+    "source": "ieltsadvantage-com-2017-11-02-task-2-coherence-and-cohesion.json",
+    "date_crawled": "2026-09-20T20:44:12"
+  },
+  "news/ieltsadvantage-com-ielts-writing-task-2.md": {
+    "path": "news/ieltsadvantage-com-ielts-writing-task-2.md",
+    "title": "IELTS Writing Task 2: 8 Steps to Success - IELTS Writing Task 2",
+    "url": "https://www.ieltsadvantage.com/ielts-writing-task-2/",
+    "doc_type": "news",
+    "source": "ieltsadvantage-com-ielts-writing-task-2.json",
+    "date_crawled": "2026-09-20T20:44:17"
+  },
+  "news/ieltsliz-com-ielts-writing-task-1.md": {
+    "path": "news/ieltsliz-com-ielts-writing-task-1.md",
+    "title": "IELTS Writing Task 1 Answer 2017",
+    "url": "https://ieltsliz.com/ielts-writing-task-1/",
+    "doc_type": "news",
+    "source": "ieltsliz-com-ielts-writing-task-1.json",
+    "date_crawled": "2026-09-20T20:44:04"
+  },
+  "news/ieltsliz-com-ielts-writing-task-2.md": {
+    "path": "news/ieltsliz-com-ielts-writing-task-2.md",
+    "title": "IELTS Writing Task 2: Free Tips, Lessons & Model Essays",
+    "url": "https://ieltsliz.com/ielts-writing-task-2/",
+    "doc_type": "news",
+    "source": "ieltsliz-com-ielts-writing-task-2.json",
+    "date_crawled": "2026-09-20T20:44:00"
+  },
+  "news/ieltstutors-org-writing-band-descriptors.md": {
+    "path": "news/ieltstutors-org-writing-band-descriptors.md",
+    "title": "Writing Band Descriptors | IELTSTutors",
+    "url": "https://ieltstutors.org/writing-band-descriptors/",
+    "doc_type": "news",
+    "source": "ieltstutors-org-writing-band-descriptors.json",
+    "date_crawled": "2026-09-20T20:44:28"
+  },
+  "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md": {
+    "path": "news/resources-cathoven-com-ielts-writing-task-2-band-descriptors.md",
+    "title": "IELTS Writing Task 2 Band Descriptors: Full Guide for All 4 Criteria | Cathoven",
+    "url": "https://resources.cathoven.com/ielts-writing-task-2/band-descriptors",
+    "doc_type": "news",
+    "source": "resources-cathoven-com-ielts-writing-task-2-band-descriptors.json",
+    "date_crawled": "2026-09-20T20:44:18"
+  }
+}
