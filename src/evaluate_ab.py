@@ -27,9 +27,13 @@ Chạy:
 """
 
 import argparse
+import copy
 import json
+import os
 import re
 import statistics
+import time
+import warnings
 from pathlib import Path
 
 
@@ -143,8 +147,13 @@ def run_retrieval_eval(top_k: int = TOP_K) -> dict:
     configs = available_configs()
     report: dict = {"top_k": top_k, "golden_cases": len(cases), "configs": {}}
 
+    # Exclude one-time model and BM25 index loading from the strategy timing.
+    dense_only(cases[0]["question"], top_k=1)
+    bm25_only(cases[0]["question"], top_k=1)
+
     for name, retrieve_fn in configs.items():
         hits, recalls, per_case = 0, [], []
+        started = time.perf_counter()
         for case in cases:
             results = retrieve_fn(case["question"], top_k)
             scored = score_case(case, results)
@@ -155,6 +164,7 @@ def run_retrieval_eval(top_k: int = TOP_K) -> dict:
         report["configs"][name] = {
             "hit_at_k": round(hits / len(cases), 4),
             "mean_lexical_recall": round(statistics.mean(recalls), 4),
+            "latency_seconds": round(time.perf_counter() - started, 4),
             "worst_cases": sorted(per_case, key=lambda item: item["lexical_recall"])[:3],
         }
         print(
@@ -252,33 +262,181 @@ def sweep_threshold(distribution: dict[str, list[float]]) -> dict:
 
 def run_ragas(top_k: int = TOP_K) -> dict:
     """4 metric bắt buộc. Cần Task 10 và một evaluator LLM."""
-    try:
-        from .task10_generation import generate_with_citation
-    except ImportError as error:
-        raise SystemExit(f"Cannot import task10_generation: {error}")
-
     cases = load_golden()
     configs = available_configs()
     if "B_hybrid_rrf" not in configs:
-        raise SystemExit(
-            "Config B needs task7_reranking.rerank_rrf. Wait for Tuan's branch "
-            "feat/fusion-fallback before running the A/B."
+        raise SystemExit("Config B requires task7_reranking.rerank_rrf.")
+
+    from datasets import Dataset
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from ragas import evaluate
+    from ragas.embeddings import LangchainEmbeddingsWrapper
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", DeprecationWarning)
+        from ragas.metrics import (
+            answer_relevancy,
+            context_precision,
+            context_recall,
+            faithfulness,
         )
 
-    try:
-        generate_with_citation(cases[0]["question"], top_k)
-    except NotImplementedError:
-        raise SystemExit(
-            "task10_generation.generate_with_citation is not implemented yet "
-            "(owner: Tuan). Run --retrieval in the meantime."
+    from .task10_generation import generate_from_chunks
+    from .task4_chunking_indexing import EMBEDDING_MODEL
+
+    evaluator_llm, evaluator_model = _ragas_llm()
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        evaluator_embeddings = LangchainEmbeddingsWrapper(
+            HuggingFaceEmbeddings(
+                model_name=EMBEDDING_MODEL,
+                encode_kwargs={"normalize_embeddings": True},
+            )
         )
 
-    raise SystemExit(
-        "TODO(Trung): wire ragas evaluate() here once Task 9/10 land.\n"
-        "Plan: build a ragas EvaluationDataset from question / answer / contexts / "
-        "reference, then evaluate with faithfulness, answer_relevancy, "
-        "context_recall, context_precision for Config A and Config B."
-    )
+    metrics = [
+        copy.deepcopy(faithfulness),
+        copy.deepcopy(answer_relevancy),
+        copy.deepcopy(context_recall),
+        copy.deepcopy(context_precision),
+    ]
+    # One generated reverse-question is enough for this lab and avoids providers
+    # that do not support requesting multiple chat generations in one call.
+    metrics[1].strictness = 1
+    report: dict = {
+        "top_k": top_k,
+        "golden_cases": len(cases),
+        "evaluator_model": evaluator_model,
+        "configs": {},
+    }
+
+    for config_name in ("A_dense_only", "B_hybrid_rrf"):
+        retrieve_fn = configs[config_name]
+        rows = {
+            "user_input": [],
+            "response": [],
+            "retrieved_contexts": [],
+            "reference": [],
+        }
+        case_ids: list[str] = []
+        started = time.perf_counter()
+
+        for case in cases:
+            chunks = retrieve_fn(case["question"], top_k)
+            generation = generate_from_chunks(case["question"], chunks)
+            rows["user_input"].append(case["question"])
+            rows["response"].append(generation["answer"])
+            rows["retrieved_contexts"].append([chunk["content"] for chunk in chunks])
+            rows["reference"].append(case["expected_answer"])
+            case_ids.append(case["id"])
+
+        dataset = Dataset.from_dict(rows)
+        evaluation = evaluate(
+            dataset,
+            metrics=metrics,
+            llm=evaluator_llm,
+            embeddings=evaluator_embeddings,
+            raise_exceptions=False,
+            show_progress=True,
+        )
+        frame = evaluation.to_pandas()
+        metric_names = [
+            "faithfulness",
+            "answer_relevancy",
+            "context_recall",
+            "context_precision",
+        ]
+        failed_metrics = [
+            name for name in metric_names if frame[name].dropna().empty
+        ]
+        if failed_metrics:
+            raise RuntimeError(
+                "RAGAS returned no valid values for: " + ", ".join(failed_metrics)
+            )
+        means = {
+            name: round(float(frame[name].dropna().mean()), 4)
+            for name in metric_names
+        }
+        per_case = []
+        for index, case_id in enumerate(case_ids):
+            per_case.append(
+                {
+                    "id": case_id,
+                    **{
+                        name: (
+                            round(float(frame.iloc[index][name]), 4)
+                            if frame.iloc[index][name] == frame.iloc[index][name]
+                            else None
+                        )
+                        for name in metric_names
+                    },
+                }
+            )
+
+        report["configs"][config_name] = {
+            "metrics": means,
+            "average": round(statistics.mean(means.values()), 4),
+            "latency_seconds": round(time.perf_counter() - started, 2),
+            "per_case": per_case,
+        }
+        print(
+            f"{config_name:16s} average={report['configs'][config_name]['average']:.4f} "
+            f"latency={report['configs'][config_name]['latency_seconds']:.2f}s"
+        )
+
+    return report
+
+
+def _ragas_llm():
+    """Build the evaluator using the same configured provider as generation."""
+    from ragas.llms import LangchainLLMWrapper
+
+    from .task10_generation import DEFAULT_MODELS, LLM_MODEL, LLM_PROVIDER
+
+    provider = LLM_PROVIDER
+    model = LLM_MODEL or DEFAULT_MODELS.get(provider, "")
+    key_names = {
+        "openai": "OPENAI_API_KEY",
+        "gemini": "GEMINI_API_KEY",
+        "anthropic": "ANTHROPIC_API_KEY",
+    }
+    key_name = key_names.get(provider)
+    api_key = os.getenv(key_name, "").strip() if key_name else ""
+    if not api_key:
+        raise SystemExit(
+            f"RAGAS requires {key_name or 'a supported provider key'} in .env."
+        )
+
+    model_prefixes = {
+        "openai": "",
+        "gemini": "gemini/",
+        "anthropic": "anthropic/",
+    }
+    if provider not in model_prefixes:
+        raise SystemExit(f"Unsupported LLM_PROVIDER for RAGAS: {provider!r}")
+
+    if provider == "openai":
+        from langchain_openai import ChatOpenAI
+
+        chat_model = ChatOpenAI(
+            model=model,
+            api_key=api_key,
+            temperature=0,
+            max_retries=2,
+        )
+    else:
+        from langchain_community.chat_models import ChatLiteLLM
+
+        chat_model = ChatLiteLLM(
+            model=f"{model_prefixes[provider]}{model}",
+            api_key=api_key,
+            temperature=0,
+            max_retries=2,
+        )
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", DeprecationWarning)
+        evaluator = LangchainLLMWrapper(chat_model)
+    return evaluator, model
 
 
 def main() -> None:

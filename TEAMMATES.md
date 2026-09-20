@@ -7,7 +7,7 @@
 | Nhánh mặc định | `main` |
 | Nhánh tích hợp | `main` — chứa bản đã review của cả hai người |
 | Nhánh của Trung | `trungdam` |
-| Nhánh của Tuấn | `thaituan` — đề xuất, đặt đối xứng với `trungdam` |
+| Nhánh của Tuấn | `tuan` |
 | Số thành viên | 2 |
 | Chủ đề corpus | **IELTS Writing** — tiêu chí chấm và band descriptors. Corpus: 5 tài liệu chính thức (IELTS CDN + Cambridge English) + 7 bài viết công khai = 12 document, 781 chunk |
 
@@ -16,7 +16,7 @@
 | # | Họ và tên | Mã học viên | Vai trò | Nhánh làm việc |
 |---|---|---|---|---|
 | 1 | Đàm Quang Trung | 2A202602525 | Data & Retrieval Foundation + Evaluation | `trungdam` |
-| 2 | Thái Hữu Tuấn | 2A202602465 | Fusion, Fallback, Generation & UI | `thaituan` |
+| 2 | Thái Hữu Tuấn | 2A202602465 | Fusion, Fallback, Generation & UI | `tuan` |
 
 Nhóm chỉ có 2 người nên không chia theo 4 role gợi ý của đề bài. Pipeline được cắt tại đúng một ranh giới: **schema `SearchResult` trong [src/contracts.py](src/contracts.py)**. Thành viên #1 sản xuất `SearchResult` (dense + BM25), thành viên #2 tiêu thụ và gộp chúng (RRF → fallback → generation → UI).
 
@@ -142,7 +142,7 @@ Phase này **không cần chờ dữ liệu thật**: contract test của task 7
 
 ## Quy ước Git
 
-- Mỗi người làm trên nhánh của mình (`trungdam` / `thaituan`), mở PR vào `main`. Khi mở PR trên GitHub, **kiểm tra base repository là repo nhóm, không phải `VinUni-AI20k`** — repo này là fork nên GitHub mặc định chọn upstream.
+- Mỗi người làm trên nhánh của mình (`trungdam` / `tuan`), mở PR vào `main`. Khi mở PR trên GitHub, **kiểm tra base repository là repo nhóm, không phải `VinUni-AI20k`** — repo này là fork nên GitHub mặc định chọn upstream.
 - Commit message ghi rõ task: `feat(task5): dense search returns SearchResult`.
 - **Mỗi người tự ghi lại commit mình phụ trách** ngay khi làm, để viết individual report ở mốc cuối.
 - Không commit: `.env`, API key, `.venv/`, `data/_tmp_pdf/`, file cache. `.env.example` chỉ chứa tên biến.
@@ -153,11 +153,11 @@ Phase này **không cần chờ dữ liệu thật**: contract test của task 7
 - [x] `data/landing/legal/` 5 PDF chính thức, `data/landing/news/` 7 JSON đủ 4 metadata key
 - [x] `data/standardized/{legal,news}/` 5 + 7 file, mỗi file ≥ 200 ký tự
 - [x] `group_project/evaluation/golden_dataset.json` — 20 case, 100% grounded
-- [ ] `group_project/evaluation/RESULT.md` không còn chữ `TODO` — **chặn bởi task 9/10**; phần retrieval + threshold đã điền số thật
-- [ ] `streamlit run app.py` chạy end-to-end, hiển thị source + `retrieval_method` + score
-- [ ] `pytest -q` xanh toàn bộ
+- [x] `group_project/evaluation/RESULT.md` có retrieval, threshold và 4 metric RAGAS bằng số đo thật
+- [x] `streamlit run app.py` khởi động, hiển thị answer, source, `retrieval_method` và score
+- [x] `pytest -q` xanh toàn bộ
 - [x] `reports/2A202602525-trung.md` — individual report của Trung
-- [ ] `reports/2A202602465-tuan.md` — individual report của Tuấn
-- [ ] Repository không chứa `.env` hay API key
+- [x] `reports/2A202602465-tuan.md` — individual report của Tuấn
+- [x] Repository không track `.env` hay API key
 
 Template individual report ở [group_project/ịndividual/INDIVIDUAL_REPORT.md](group_project/ịndividual/INDIVIDUAL_REPORT.md) (tên thư mục có typo `ị` là của repo gốc, giữ nguyên). Template yêu cầu copy thành `reports/<student-id>-<short-name>.md`, **không** sửa trực tiếp file template. `reports/RESULT.md` và `reports/INDIVIDUAL_REPORT.md` là bản trùng của repo gốc — báo cáo đánh giá phải điền vào `group_project/evaluation/RESULT.md` vì test đọc đúng đường dẫn đó.
