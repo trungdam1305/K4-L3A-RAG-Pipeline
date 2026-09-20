@@ -18,7 +18,7 @@
 | Evaluator model                    | TODO — chốt sau khi Tuấn chọn `LLM_PROVIDER` |
 | Generator model                    | TODO — phụ thuộc `LLM_PROVIDER` trong `.env` (Task 10) |
 | Embedding model                    | `intfloat/multilingual-e5-small`, dim 384, cosine, normalize=True |
-| Corpus version/commit              | `team/dev`, 12 documents (5 legal + 7 news), 781 chunks, chunk_size 500 / overlap 50 |
+| Corpus version/commit              | `fc0340c` (task1-3), 12 documents (5 legal + 7 news), 781 chunks, chunk_size 500 / overlap 50 |
 | Golden dataset size                | 20 case (yêu cầu tối thiểu 15), 100% grounded — đã verify `expected_context` tồn tại verbatim trong corpus |
 | `top_k`                            | 5 |
 | Fallback threshold and calibration | **0.8689** — quét threshold trên 12 query in-domain + 10 out-of-domain, chọn điểm accuracy cao nhất (0.9545), 0 false accept / 1 false reject. Chi tiết ở mục *Threshold calibration* |
